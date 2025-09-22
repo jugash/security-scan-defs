@@ -1,0 +1,32 @@
+# Web Team Organization Definitions
+# This file contains organization definitions managed by the web team
+
+schema_version: "1.0"
+
+organizations:
+  web-applications:
+    description: "Web application containers managed by web team"
+    repositories:
+      frontend-app:
+        description: "Frontend React application"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "myorg/frontend-app"
+        versions:
+          pattern: "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "stable"
+
+      admin-portal:
+        description: "Admin portal application"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "myorg/admin-portal"
+        versions:
+          pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "production"

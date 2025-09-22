@@ -1,0 +1,43 @@
+# Backend Team Organization Definitions
+# This file contains organization definitions managed by the backend team
+
+schema_version: "1.0"
+
+organizations:
+  backend-services:
+    description: "Backend microservices managed by backend team"
+    repositories:
+      api-gateway:
+        description: "API Gateway service"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "myorg/api-gateway"
+        versions:
+          pattern: "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "stable"
+
+      user-service:
+        description: "User management service"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "myorg/user-service"
+        versions:
+          pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "production"
+
+      notification-service:
+        description: "Notification service"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "myorg/notification-service"
+        versions:
+          pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"

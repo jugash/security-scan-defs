@@ -1,0 +1,58 @@
+# Infrastructure Team Organization Definitions
+# This file contains organization definitions managed by the infrastructure team
+
+schema_version: "1.0"
+
+organizations:
+  infrastructure:
+    description: "Infrastructure and base images managed by infrastructure team"
+    repositories:
+      ubuntu-base:
+        description: "Ubuntu base images"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "library/ubuntu"
+        versions:
+          pattern: "^22\\.04.*$"
+        tags:
+          - "latest"
+          - "22.04"
+
+      alpine-base:
+        description: "Alpine base images"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "library/alpine"
+        versions:
+          pattern: "^3\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "3.19"
+          - "3.20"
+
+  helm-charts:
+    description: "OCI-based Helm charts"
+    repositories:
+      postgresql:
+        description: "PostgreSQL Helm chart as OCI artifact"
+        type: "oci-helm"
+        source:
+          registry: "docker.io"
+          repository: "bitnamicharts/postgresql"
+        versions:
+          pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+
+      redis:
+        description: "Redis Helm chart as OCI artifact"
+        type: "oci-helm"
+        source:
+          registry: "docker.io"
+          repository: "bitnamicharts/redis"
+        versions:
+          pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"

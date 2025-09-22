@@ -1,0 +1,91 @@
+# Organization Definitions for Image Import Pipeline
+# This file contains only organization and repository definitions
+# Global settings (registry, policies) are defined in the main application repository
+
+schema_version: "1.0"
+
+# Organization definitions - these can be managed by different teams
+organizations:
+  # Ubuntu base images
+  ubuntu:
+    description: "Ubuntu base images"
+    repositories:
+      ubuntu:
+        description: "Official Ubuntu images"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "library/ubuntu"
+        versions:
+          pattern: "^22\\.04.*$"
+        tags:
+          - "latest"
+          - "22.04"
+
+  # Redis database images
+  redis:
+    description: "Redis database images"
+    repositories:
+      redis:
+        description: "Official Redis images"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "library/redis"
+        versions:
+          pattern: "^7\\.[0-9]+\\.[0-9]+$"
+        tags:
+          - "latest"
+          - "alpine"
+
+  # Test containers for development
+  test-containers:
+    description: "Test container images for development"
+    repositories:
+      nginx-test:
+        description: "Nginx test image"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "nginx"
+        versions:
+          - "1.29.1-perl"
+          - "1.29-bookworm-perl"
+        tags:
+          - "latest"
+
+      alpine-test:
+        description: "Alpine test image"
+        type: "container"
+        source:
+          registry: "docker.io"
+          repository: "alpine"
+        versions:
+          - "3.19.8"
+          - "3.20.7"
+        tags:
+          - "latest"
+
+  # OCI-based Helm charts
+  test-helm-charts:
+    description: "Test OCI-based Helm charts"
+    repositories:
+      postgresql-test:
+        description: "PostgreSQL Helm chart as OCI artifact"
+        type: "oci-helm"
+        source:
+          registry: "docker.io"
+          repository: "bitnamicharts/postgresql"
+        versions:
+          - "12.1.0"
+          - "13.1.0"
+
+      redis-test:
+        description: "Redis Helm chart as OCI artifact"
+        type: "oci-helm"
+        source:
+          registry: "docker.io"
+          repository: "bitnamicharts/redis"
+        versions:
+          - "17.1.0"
+          - "18.1.0"
