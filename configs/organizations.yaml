@@ -9,13 +9,10 @@ organizations:
   # Ubuntu base images
   ubuntu:
     description: "Ubuntu base images"
-    repositories:
-      ubuntu:
+    images:
+      docker.io/library/ubuntu:
         description: "Official Ubuntu images"
         type: "container"
-        source:
-          registry: "docker.io"
-          repository: "library/ubuntu"
         versions:
           pattern: "^22\\.04.*$"
         tags:
@@ -25,13 +22,10 @@ organizations:
   # Redis database images
   redis:
     description: "Redis database images"
-    repositories:
-      redis:
+    images:
+      docker.io/library/redis:
         description: "Official Redis images"
         type: "container"
-        source:
-          registry: "docker.io"
-          repository: "library/redis"
         versions:
           pattern: "^7\\.[0-9]+\\.[0-9]+$"
         tags:
@@ -41,25 +35,19 @@ organizations:
   # Test containers for development
   test-containers:
     description: "Test container images for development"
-    repositories:
-      nginx-test:
+    images:
+      docker.io/nginx:
         description: "Nginx test image"
         type: "container"
-        source:
-          registry: "docker.io"
-          repository: "nginx"
         versions:
           - "1.29.1-perl"
           - "1.29-bookworm-perl"
         tags:
           - "latest"
 
-      alpine-test:
+      docker.io/alpine::
         description: "Alpine test image"
         type: "container"
-        source:
-          registry: "docker.io"
-          repository: "alpine"
         versions:
           - "3.19.8"
           - "3.20.7"
@@ -69,18 +57,15 @@ organizations:
   # OCI-based Helm charts
   test-helm-charts:
     description: "Test OCI-based Helm charts"
-    repositories:
-      postgresql-test:
+    images:
+      docker.io/bitnamicharts/postgresql:
         description: "PostgreSQL Helm chart as OCI artifact"
         type: "oci-helm"
-        source:
-          registry: "docker.io"
-          repository: "bitnamicharts/postgresql"
         versions:
           - "12.1.0"
           - "13.1.0"
 
-      redis-test:
+      docker.io/bitnamicharts/redis:
         description: "Redis Helm chart as OCI artifact"
         type: "oci-helm"
         source:
